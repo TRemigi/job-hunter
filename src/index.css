@@ -38,6 +38,19 @@ code {
 
 /* utilities */
 
+.contact-card {
+    height: 50vh;
+    margin: 10px 0 10px 0;
+}
+
+.contact-card img {
+    height: 30vh;
+}
+
+.fill-screen {
+    min-height: 90vh;
+}
+
 .job-title {
     color: white;
 }
@@ -139,6 +152,7 @@ header {
 .section-title {
     font-family:"Neon W05 Display";
     text-align: center;
+    height: 20vh;
     border: solid 3px;
     border-radius: 15px;
     padding: 8% 10px 8% 0;
