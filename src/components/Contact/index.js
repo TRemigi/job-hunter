@@ -12,7 +12,7 @@ function Contact () {
                     </h2>
                 </div>
                 {contacts.map((item) => (
-                    <div className="col-12 col-md-4 mt-4">
+                    <div className="col-12 col-md-4 mt-4" key={item.name}>
                     <div className="card contact-card">
                         <img className="card-img-top" src={require(`../../assets/images/icons/${item.icon}`)} alt={item.name} />
                         <div className="card-body">
