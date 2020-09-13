@@ -38,6 +38,10 @@ code {
 
 /* utilities */
 
+.job-title {
+    color: white;
+}
+
 .back-dark {
     background-color: var(--black);
 }
@@ -134,12 +138,12 @@ header {
 
 .section-title {
     font-family:"Neon W05 Display";
-    text-align: right;
+    text-align: center;
     border: solid 3px;
     border-radius: 15px;
     padding: 8% 10px 8% 0;
     margin-right: 35px;
-    font-size: 2.5em;
+    font-size: xx-large;
 }
 
 #about-image {
