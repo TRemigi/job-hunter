@@ -1,13 +1,41 @@
 import React, {useState, useEffect } from 'react';
-import testJobs from '../../assets/js/jobs';
+const testJobs = [
+    {
+        name: "Walmart",
+        status: "applied"
+    },
+    {
+        name: "Apple",
+        status: "applied"
+    },
+    {
+        name: "Target",
+        status: "need-apply"
+    },
+    {
+        name: "Smith's",
+        status: "need-apply"
+    },
+    {
+        name: "Burger King",
+        status: "interview"
+    },
+    {
+        name: "Sewage Plant",
+        status: "interview"
+    },
+]
 
 function Jobs () {
 
-    const [jobStatus, setJobStatus] = useState();
+
+    const [jobStatus, setJobStatus] = useState(testJobs);
+
+    // useEffect - onRender make call to db, then setState with jobs array
 
     function updateStatus(e) {
         const jobName = e.target.id;
-        let currentJob = testJobs.find(job => job.name === jobName);
+        let currentJob = jobStatus.find(job => job.name === jobName);
         if (currentJob.status === "need-apply") {
             currentJob.status = "applied";
         } else if (currentJob.status === "applied") {
@@ -15,7 +43,9 @@ function Jobs () {
         } else {
             currentJob.status ="complete"
         }
-        console.log(currentJob);
+        const newJobs = jobStatus;
+        console.log(newJobs);
+        setJobStatus(newJobs);
 
         // PUT find current job in db and update status to next status level
 
@@ -53,7 +83,6 @@ function Jobs () {
     }
 
     function sortJobs (status, jobs) {
-        console.log(jobs)
         return jobs.map((job) => (
             (job.status === status &&
                 <div key={job.name} className="card">
@@ -71,23 +100,16 @@ function Jobs () {
             <div className="row">
                 <div className="col-12 col-md-4 align-self-center">
                     <h2 className="section-title glowing">Need to Apply</h2>
-                    {sortJobs("need-apply", testJobs)}
+                    {sortJobs("need-apply", jobStatus)}
                 </div>
                 <div className="col-12 col-md-4">
                     <h2 className="section-title glowing">Waiting for Response</h2>
-                    {sortJobs("applied", testJobs)}
+                    {sortJobs("applied", jobStatus)}
                 </div>
                 <div className="col-12 col-md-4">
                     <h2 className="section-title glowing">Interview Scheduled</h2>
-                    {sortJobs("interview", testJobs)}
+                    {sortJobs("interview", jobStatus)}
                 </div>
-            </div>
-        );
-    }
-
-    function clearCards () {
-        return (
-            <div className="row">
             </div>
         );
     }
@@ -95,7 +117,6 @@ function Jobs () {
     return(
         <section className="bottom-border fill-screen">
             <div className="container-fluid">
-                {clearCards()}
                 {buildCards()}
             </div>
         </section>
